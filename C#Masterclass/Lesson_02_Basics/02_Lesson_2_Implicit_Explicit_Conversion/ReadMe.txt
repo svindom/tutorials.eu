@@ -1,0 +1,1 @@
+An example of how to convert "int", "float", "bool", etc. to "string".
