@@ -1,4 +1,4 @@
-﻿class Employee
+﻿public class Employee
 {
     // Properties
     public string Role { get; set; }
