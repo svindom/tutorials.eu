@@ -1,4 +1,4 @@
-﻿public class EmployeeDirectory
+﻿public class EmployeeList
 {
     private List<Employee> _employees = new List<Employee>();
     public void AddEmployee(Employee employeesToAdd)

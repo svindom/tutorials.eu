@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
-EmployeeDirectory employeeDirectory = new EmployeeDirectory();
-employeeDirectory.AddEmployee(
+EmployeeList employeeList = new EmployeeList();
+EmployeeModifier employeeModifier = new EmployeeModifier();
+
+employeeList.AddEmployee(
     new Employee("CEO", "Gwyn", 45, 200),
     new Employee("Manager", "Joe", 35, 150),
     new Employee("HR", "Lora", 24, 95),
@@ -11,26 +13,32 @@ employeeDirectory.AddEmployee(
     );
 
 Dictionary<string,Employee> employeesDictionary = new Dictionary<string, Employee>();
-foreach(Employee employee in employeeDirectory.GetEmployees())
+foreach(Employee employee in employeeList.GetEmployees())
 {
     employeesDictionary.Add(employee.Role, employee);
 }
 
 
-string key = "CEO";
-if (employeesDictionary.ContainsKey(key))
-{
-    Employee employeeInfo = employeesDictionary[key];
-    Console.WriteLine($"{employeeInfo.Name}, {employeeInfo.Role}, {employeeInfo.Salary}$");
-}
-else
-{
-    Console.WriteLine($"No emploee founf with this key {key}");
-}
+
+employeeModifier.CheckIfContainsKey(employeesDictionary, "HR");
+employeeModifier.PrintAllEmployee(employeesDictionary);
+
+Console.WriteLine("----------------------------------------------------------------------------------");
+
+employeeModifier.UpdateEmployee(employeesDictionary, "HR");
+employeeModifier.PrintAllEmployee(employeesDictionary);
+
+Console.WriteLine("----------------------------------------------------------------------------------");
+
+employeeModifier.GetValueEmployeeIntern(employeesDictionary);
+
+Console.WriteLine("----------------------------------------------------------------------------------");
+
+employeeModifier.RemoveEmployee(employeesDictionary, "Intern");
+employeeModifier.PrintAllEmployee(employeesDictionary);
+
+
+
 
 Console.ReadKey();
-
-
-
-
 
