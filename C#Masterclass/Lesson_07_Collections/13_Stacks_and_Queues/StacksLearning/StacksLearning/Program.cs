@@ -58,7 +58,10 @@ Console.ReadKey();
 
 public class StackAddition
 {
+    // fields
     private Stack<int> _stack; // defining a new stack
+
+    //properties
     public Stack<int> Stack 
     {
         get 
@@ -67,6 +70,7 @@ public class StackAddition
         } 
     }
 
+    //constructor
     public StackAddition()
     {
         _stack = new Stack<int>();
