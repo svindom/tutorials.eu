@@ -53,7 +53,7 @@ class Program
                     case "R":
                         if (computerMove == gameObjects[0])
                         {
-                            Console.WriteLine($"Computer has '{gameObjects[1]}'. It's tie!");
+                            Console.WriteLine($"Computer has '{gameObjects[0]}'. It's tie!");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
@@ -89,7 +89,7 @@ class Program
                         {
                             computerScore++;
                             gameAttempts++;
-                            Console.WriteLine($"Computer has \'{gameObjects[1]}\'. He wins this turn.");
+                            Console.WriteLine($"Computer has \'{gameObjects[2]}\'. He wins this turn.");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
@@ -97,7 +97,7 @@ class Program
                         {
                             playerScore++;
                             gameAttempts++;
-                            Console.WriteLine($"Computer has \'{gameObjects[2]}\'. Great! You win this turn.");
+                            Console.WriteLine($"Computer has \'{gameObjects[0]}\'. Great! You win this turn.");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
@@ -109,7 +109,7 @@ class Program
                     case "S":
                         if (computerMove == gameObjects[2])
                         {
-                            Console.WriteLine($"Computer has '{gameObjects[1]}'. It's tie!");
+                            Console.WriteLine($"Computer has '{gameObjects[2]}'. It's tie!");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
@@ -117,7 +117,7 @@ class Program
                         {
                             computerScore++;
                             gameAttempts++;
-                            Console.WriteLine($"Computer has \'{gameObjects[1]}\'. He wins this turn.");
+                            Console.WriteLine($"Computer has \'{gameObjects[0]}\'. He wins this turn.");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
@@ -125,7 +125,7 @@ class Program
                         {
                             playerScore++;
                             gameAttempts++;
-                            Console.WriteLine($"Computer has \'{gameObjects[2]}\'. Great! You win this turn.");
+                            Console.WriteLine($"Computer has \'{gameObjects[1]}\'. Great! You win this turn.");
                             Console.WriteLine($"Your score: {playerScore}, computer score: {computerScore}");
                             Console.WriteLine();
                         }
