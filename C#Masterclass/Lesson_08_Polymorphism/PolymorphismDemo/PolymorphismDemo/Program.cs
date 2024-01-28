@@ -17,8 +17,17 @@ Console.WriteLine();
 Car carBMW = new BMW(250, "white", "g3");
 carBMW.ShowDetails();
 
+Console.WriteLine();
+
+carBMW.SetCarIDInfo(12345, "Annika");
+carBMW.GetCarIDInfo();
+
+Console.WriteLine();
+
 AnotherDumpBMW anotherDumpBMW = new AnotherDumpBMW(250, "white", "ggg3");
 anotherDumpBMW.Repair();
+
+
 
 Console.ReadKey();
 
@@ -29,6 +38,19 @@ public class Car
     public int HP { get; set; }
     public string Color { get; set; }
     
+    // has a relationship
+    protected CarIDInfo carIDInfo = new CarIDInfo();
+
+    public void SetCarIDInfo (int idNum, string owner)
+    {
+        carIDInfo.IDNum = idNum;
+        carIDInfo.Owner = owner;
+    }
+
+    public void GetCarIDInfo ()
+    {
+        Console.WriteLine($"The car has the ID of {carIDInfo.IDNum} and is owned by {carIDInfo.Owner}");
+    }
 
     public Car(int hp, string color)
     {
@@ -47,6 +69,31 @@ public class Car
     }
 }
 
+// Derrived Class 1
+public class Audi : Car
+{
+    public string Model { get; set; }
+    private string _brand;
+
+    public Audi(int hp, string color, string model) : base(hp, color)
+    {
+        Model = model;
+        _brand = "I don't care about dump car brands (For Audi)";
+    }
+    public override void ShowDetails()
+    {
+        Console.WriteLine($"HP of a Audi car is: {HP}\nthe color of the Audi car is: {Color}");
+        Console.WriteLine(_brand);
+    }
+
+    public override void Repair()
+    {
+        Console.WriteLine("Audi Car was repaired!");
+    }
+}
+
+
+// Derrived Class 2
 public class BMW : Car
 {
     private string _brand;
@@ -69,40 +116,45 @@ public class BMW : Car
     }
 }
 
-public class Audi : Car
+
+// Derrived Class from derrived
+public class AnotherDumpBMW : BMW
 {
-    public string Model { get; set; }
-    private string _brand;
+    public AnotherDumpBMW(int hp, string color, string model) : base(hp, color, model)
+    {
 
-    public Audi(int hp, string color, string model) : base(hp, color)
-    {
-        Model = model;
-        _brand = "I don't care about dump car brands (For Audi)";
-    }
-    public override void ShowDetails()
-    {
-        Console.WriteLine($"HP of a Audi car is: {HP}\nthe color of the Audi car is: {Color}");
-        Console.WriteLine(_brand);
     }
 
+    // this method can't be ovveriden as it sealed in the base class 
+    /*
     public override void Repair()
     {
-        Console.WriteLine("Audi Car was repaired!");
+        base.Repair();
     }
+    */
+}
 
-    public class AnotherDumpBMW : BMW
+
+
+
+// Has a
+
+public class CarIDInfo
+{
+    // One way of declare property
+    private int _idNum = 0; // Backing field with initializer
+    public int IDNum
     {
-        public AnotherDumpBMW(int hp, string color, string model) : base(hp, color, model)
+        get
         {
-
+            return _idNum;
         }
-
-        // this method can't be ovveriden as it sealed in the base class 
-        /*
-        public override void Repair()
+        set
         {
-            base.Repair();
+            _idNum = value; // 'value' is the value passed to the setter    
         }
-        */
     }
+
+    // The same but more simple way to declare property
+    public string Owner { get; set; } = "No owner";
 }
