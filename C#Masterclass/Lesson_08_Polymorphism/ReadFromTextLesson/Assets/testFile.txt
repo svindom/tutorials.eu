@@ -1,0 +1,1 @@
+Wow! This text I'm writing through the console. Hope it will work as intended.
