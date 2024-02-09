@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ArgsExplained": {
+      "commandName": "Project",
+      "commandLineArgs": "Alex"
+    }
+  }
+}
