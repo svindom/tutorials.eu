@@ -43,14 +43,16 @@ class Player
     public Player (string playerName)
     {
         this.PlayerName = playerName;
+        GameEventManager.OnGAmeOver += StartGame;
+        GameEventManager.OnGAmeOver += GameOver;
     }
 
-    public void StartGame()
+    private void StartGame()
     {
         Console.WriteLine($"Spawning Player with ID : {PlayerName}");
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         Console.WriteLine($"Removing Player with ID : {PlayerName}");
     }
@@ -103,4 +105,13 @@ class GameEventManager
 
     // create two delegates variables called OnGameStart an OnGameOver
     public static GameEvent OnGameStart, OnGAmeOver; 
+
+    public static void TriggerGameStart()
+    {
+        if (OnGameStart != null)
+        {
+            Console.WriteLine("The game has started...");
+            OnGameStart();
+        }
+    }
 }
